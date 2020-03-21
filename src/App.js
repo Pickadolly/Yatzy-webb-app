@@ -1,6 +1,6 @@
 import React from "react";
 import { Grommet } from "grommet";
-import Layout from "./Layout";
+import Layout from "./Components/Layout";
 
 
 function App() {
@@ -14,7 +14,7 @@ function App() {
 const theme = {
   global: {
     colors: {
-      brand: "#FF80EA"
+      brand: "#FD6FFF",
     },
     font: {
       family: "Roboto",

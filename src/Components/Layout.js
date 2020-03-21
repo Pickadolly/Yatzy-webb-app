@@ -6,12 +6,15 @@ import {
   Button,
   Collapsible,
   Layer,
-  ResponsiveContext
+  ResponsiveContext,
+  Select
 } from "grommet";
 import { Gremlin, Close } from "grommet-icons";
 
 function Layout() {
   const [showSidebar, setShowSidebar] = useState(false);
+  const [value, setValue] = React.useState("medium");
+
   return (
     <ResponsiveContext.Consumer>
       {size => (
@@ -34,12 +37,20 @@ function Layout() {
                 <Box
                   flex
                   width="medium"
-                  background="light-2"
+                  background="#81FCED"
                   elevation="small"
                   align="center"
                   justify="center"
                 >
-                  sidebar
+                  <Select
+                    alignSelf="center"
+                    margin="xsmall"
+                    size="medium"
+                    closeOnChange={true}
+                    options={["small", "medium", "large"]}
+                    value={value}
+                    onChange={({ option }) => setValue(option)}
+                  />
                 </Box>
               </Collapsible>
             ) : (
@@ -56,6 +67,7 @@ function Layout() {
                     onClick={() => setShowSidebar(false)}
                   />
                 </Box>
+                
                 <Box fill background="light-2" align="center" justify="center">
                   sidebar
                 </Box>
