@@ -3,10 +3,7 @@ import Lodash from 'lodash';
 
 export function Yatzy() {
 
-    const scoreCalculationc = (dice, category) => (
-        counts = Lodash.countBy(dice)
-
-    )
+  
 
 
 

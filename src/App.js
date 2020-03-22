@@ -11,15 +11,19 @@ function App() {
   )
 }
 
+
+
+
 const theme = {
   global: {
     colors: {
-      brand: "#FD6FFF",
+      brand: "#7D4CDB",
+      font: "#6FFFB0"
     },
     font: {
       family: "Roboto",
       size: "18px",
-      height: "20px"
+      height: "20px",
     }
   }
 };

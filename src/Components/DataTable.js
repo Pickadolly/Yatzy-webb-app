@@ -1,20 +1,22 @@
 import React from "react";
-import { DataTable, Box, Meter } from "grommet";
+import { DataTable, Box, Meter, Text } from "grommet";
 
-function DataTable() {
+function DisplayData() {
   return (
     <DataTable
+
+      margin={{ top: "large", right: "900px" }}
       columns={[
         {
-          property: "name",
-          header: <Text>Name</Text>,
+          property: "player",
+          header: <Text>Player</Text>,
           primary: true
         },
         {
           property: "percent",
-          header: "Complete",
+          header: "Score",
           render: datum => (
-            <Box pad={{ vertical: "xsmall" }}>
+            <Box round={{ size: "small" }} pad={{ vertical: "xsmall" }}>
               <Meter
                 values={[{ value: datum.percent }]}
                 thickness="small"
@@ -25,13 +27,13 @@ function DataTable() {
         }
       ]}
       data={[
-        { name: "Alan", percent: 20 },
-        { name: "Bryan", percent: 30 },
-        { name: "Chris", percent: 40 },
-        { name: "Eric", percent: 80 }
+        { player: "Alan", percent: 20 },
+        { player: "Bryan", percent: 30 },
+        { player: "Chris", percent: 40 },
+        { player: "Eric", percent: 80 }
       ]}
     />
   );
 }
 
-export default DataTable;
+export default DisplayData;

@@ -4,53 +4,48 @@ import {
   Box,
   Heading,
   Button,
+  ResponsiveContext,
   Collapsible,
   Layer,
-  ResponsiveContext,
-  Select
+  Main
 } from "grommet";
-import { Gremlin, Close } from "grommet-icons";
+import { Gremlin, FormClose } from "grommet-icons";
+import GridLayout from "./GridLayout";
 
 function Layout() {
   const [showSidebar, setShowSidebar] = useState(false);
-  const [value, setValue] = React.useState("medium");
 
   return (
     <ResponsiveContext.Consumer>
       {size => (
-        <Box fill>
+        <Box fill 
+       
+        >
           <NavBar>
-            <Heading level="3" margin="none">
+            <Heading level="3" margin="none" color="#6FFFB0">
               Hello, welcome to YATZY, let's play!
             </Heading>
             <Button
-              icon={<Gremlin />}
+              icon={<Gremlin size="large" color="#6FFFB0" />}
               onClick={() => setShowSidebar(!showSidebar)}
             />
           </NavBar>
-          <Box direction="row" flex overflow={{ horizontal: "hidden" }}>
-            <Box flex align="center" justify="center">
-              App body
-            </Box>
+          <Box direction='row' flex overflow={{ horizontal: 'hidden' }} alignContent="center">
+            <Main overflow="hidden">
+              <GridLayout />
+              </Main>
+         
             {!showSidebar || size !== "small" ? (
-              <Collapsible direction="horizontal" open={showSidebar}>
+              <Collapsible direction="horizontal" open={showSidebar} siz>
                 <Box
                   flex
-                  width="medium"
-                  background="#81FCED"
+                  width="small"
+                  background="light-2"
                   elevation="small"
                   align="center"
                   justify="center"
                 >
-                  <Select
-                    alignSelf="center"
-                    margin="xsmall"
-                    size="medium"
-                    closeOnChange={true}
-                    options={["small", "medium", "large"]}
-                    value={value}
-                    onChange={({ option }) => setValue(option)}
-                  />
+                  sidebar
                 </Box>
               </Collapsible>
             ) : (
@@ -63,16 +58,21 @@ function Layout() {
                   direction="row"
                 >
                   <Button
-                    icon={<Close />}
+                    icon={<FormClose />}
                     onClick={() => setShowSidebar(false)}
                   />
                 </Box>
-                
-                <Box fill background="light-2" align="center" justify="center">
-                  sidebar
+                <Box
+                  fill
+                  background="light-2"
+                  align="center"
+                  justify="center"
+                >
+            
                 </Box>
               </Layer>
             )}
+
           </Box>
         </Box>
       )}
