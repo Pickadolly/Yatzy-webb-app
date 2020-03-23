@@ -33,6 +33,29 @@
       body {
         margin: 0;
       }
+      #chomp-mouth {
+			opacity: 0;
+			animation: chomp-mouth 0.5s infinite;
+			animation-delay: 0.5s;
+		}
+	
+		@keyframes chomp-mouth {
+			0% {
+				opacity: 0;
+			}
+			5% {
+				opacity: 1;
+			}
+			50% {
+				opacity: 1;
+			}
+			51% {
+				opacity: 0;
+			}
+			100% {
+				opacity: 0;
+			}
+		}
     </style>
   </head>
   <body>

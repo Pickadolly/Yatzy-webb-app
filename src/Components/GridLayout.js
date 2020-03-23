@@ -47,4 +47,4 @@ export const GridLayout = () => {
   );
 };
 
-export default GridLayout;
+

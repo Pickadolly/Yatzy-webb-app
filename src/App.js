@@ -1,18 +1,50 @@
 import React from "react";
-import { Grommet } from "grommet";
-import Layout from "./Components/Layout";
-
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { Grommet, Box } from "grommet";
+import { CircleQuestion, Risk, Gremlin } from "grommet-icons";
+import Dashboard from "./Components/Dashboard";
+import Rules from "./Components/Rules";
+import StartGame from "./Components/StartGame";
+import SideBar from "./Components/SideBar";
 
 function App() {
   return (
-  <Grommet theme={theme} themeMode="dark" full>
-    <Layout />
-  </Grommet>
-  )
+    <Router>
+      <Grommet theme={theme} themeMode="dark" full>
+        <Box direction="row" fill>
+          <SideBar
+            appIcon={<Gremlin />}
+            color="brand"
+            appName="YATZY"
+            items={items}
+          />
+          <Box flex>
+            <Switch>
+              <Route exact path="/" component={Dashboard} />
+              <Route exact path="/rules" component={Rules} />
+              <Route exact path="/startgame" component={StartGame} />
+            </Switch>
+          </Box>
+        </Box>
+      </Grommet>
+    </Router>
+  );
 }
 
-
-
+const items = [
+  {
+    label: "home",
+    Icon: Gremlin
+  },
+  {
+    label: "rules",
+    Icon: CircleQuestion
+  },
+  {
+    label: "startgame",
+    Icon: Risk
+  }
+];
 
 const theme = {
   global: {
@@ -23,7 +55,7 @@ const theme = {
     font: {
       family: "Roboto",
       size: "18px",
-      height: "20px",
+      height: "20px"
     }
   }
 };
