@@ -1,28 +1,24 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
-import { Grommet, Box } from "grommet";
-import { CircleQuestion, Risk, Gremlin } from "grommet-icons";
-import Dashboard from "./Components/Dashboard";
-import Rules from "./Components/Rules";
-import StartGame from "./Components/StartGame";
-import SideBar from "./Components/SideBar";
+import { Grommet, Box, Button } from "grommet";
+
+import SideBar from "./components/SideBar";
+import Dashboard from "./pages/Dashboard";
+import Rules from "./pages/Rules";
+import StartGame from "./pages/StartGame";
+
 
 function App() {
   return (
     <Router>
       <Grommet theme={theme} themeMode="dark" full>
         <Box direction="row" fill>
-          <SideBar
-            appIcon={<Gremlin />}
-            color="brand"
-            appName="YATZY"
-            items={items}
-          />
+          <SideBar />
           <Box flex>
             <Switch>
-              <Route exact path="/" component={Dashboard} />
-              <Route exact path="/rules" component={Rules} />
-              <Route exact path="/startgame" component={StartGame} />
+              <Route path="/" exact component={Dashboard} />
+              <Route path="/rules" component={Rules} />
+              <Route path="/startgame" component={StartGame} />
             </Switch>
           </Box>
         </Box>
@@ -31,20 +27,7 @@ function App() {
   );
 }
 
-const items = [
-  {
-    label: "home",
-    Icon: Gremlin
-  },
-  {
-    label: "rules",
-    Icon: CircleQuestion
-  },
-  {
-    label: "startgame",
-    Icon: Risk
-  }
-];
+
 
 const theme = {
   global: {

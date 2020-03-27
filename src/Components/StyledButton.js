@@ -1,8 +1,45 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState } from "react";
 import { Box, Button, Drop } from "grommet";
-import { Risk, CircleQuestion, Gremlin } from "grommet-icons";
 
-const SpecialButton = ({ iconName, index }) => {
+
+function StyledButton({ iconName, icon }) {
+  const [over, setOver] = useState();
+  const ref = useRef();
+
+  const hoverColor = { color: "accent-1", opacity: 0.9 };
+
+  return (
+    <Box width="100%">
+      <Button
+        icon={icon}
+        ref={ref}
+        onMouseOver={() => setOver(true)}
+        onMouseLeave={() => setOver(false)}
+        fill="horizontal"
+        hoverIndicator={hoverColor}
+        pad={{ vertical: "small" }}
+        align="center"
+      ></Button>
+      {ref.current && over && (
+        <Drop align={{ left: "right" }} target={ref.current} plain>
+          <Box
+            animation="slideRight"
+            margin="xsmall"
+            pad="small"
+            background={hoverColor}
+            round={{ size: "medium", corner: "right" }}
+          >
+            {iconName}
+          </Box>
+        </Drop>
+      )}
+    </Box>
+  );
+}
+
+export default StyledButton;
+
+/*const SpecialButton = ({ iconName, index }) => {
     const [over, setOver] = useState();
     const iconsMap = color => [
         <Gremlin color={color} />,
@@ -45,4 +82,4 @@ const SpecialButton = ({ iconName, index }) => {
     )
 }
 
-export default SpecialButton;
+export default SpecialButton;*/

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Heading, Markdown, Paragraph } from "grommet";
-import { Gremlin } from "./Gremlin";
+import { Gremlin } from "../components/Gremlin";
 
 function Dashboard() {
   return (

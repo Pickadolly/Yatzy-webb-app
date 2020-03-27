@@ -1,5 +1,5 @@
-import React from "react";
-import { useState } from "react";
+import React from "./node_modules/react";
+import { useState } from "./node_modules/react";
 import {
   Box,
   Heading,
@@ -8,8 +8,8 @@ import {
   Collapsible,
   Layer,
   Main
-} from "grommet";
-import { Gremlin, FormClose } from "grommet-icons";
+} from "./node_modules/grommet";
+import { Gremlin, FormClose } from "./node_modules/grommet-icons";
 import GridLayout from "./GridLayout";
 
 function Layout() {

@@ -1,5 +1,5 @@
-import React from "react";
-import { Box, Grid, ResponsiveContext } from "grommet";
+import React from "./node_modules/react";
+import { Box, Grid, ResponsiveContext } from "./node_modules/grommet";
 
 const ResponsiveGrid = ({ children, areas, ...props }) => {
   const size = React.useContext(ResponsiveContext);

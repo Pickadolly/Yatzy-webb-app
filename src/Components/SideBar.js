@@ -1,11 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CircleQuestion, Gremlin, Risk } from "grommet-icons";
-import { Box, Text, Button, ResponsiveContext } from "grommet";
-import SpecialButton from "./SpecialButton";
+import { Box, Button, ResponsiveContext } from "grommet";
+import StyledButton from "./StyledButton";
 
-function SideBar(props) {
+function SideBar() {
   const size = useContext(ResponsiveContext);
+  const [hover, setHover] = useState();
+
   return (
     <Box fill="vertical" width="xxsmall" background="brand" elevation="medium">
       <Box
@@ -15,38 +17,68 @@ function SideBar(props) {
         pad={{ vertical: "small" }}
       ></Box>
       <Box flex overflow="auto">
-        <Box align="center" gap={size === "small" ? "medium" : "small"}>
-          {["Gremlin", "CircleQuestion", "Risk"].map((iconName, index) => (
-            <SpecialButton key={iconName} iconName={iconName} index={index} />
-          ))}
+        <Box
+          pad={{ vertical: "small" }}
+          gap="xsmall"
+          align="center"
+          justify="center"
+        >
+          <Box align="center" gap={size === "small" ? "medium" : "small"}>
+            <Link to="/">
+              <StyledButton
+                icon={
+                  <Gremlin
+                    onMouseOver={() => setHover(true)}
+                    onMouseOut={() => setHover(false)}
+                    color={hover ? "black" : "white"}
+                  />
+                }
+                iconName="Home"
+              />
+            </Link>
+
+            <Link to="/rules">
+              <StyledButton
+                icon={
+                  <CircleQuestion
+                    onMouseOver={() => setHover(true)}
+                    onMouseOut={() => setHover(false)}
+                    color={hover ? "black" : "white"}
+                  />
+                }
+                iconName="Rules"
+              />
+            </Link>
+
+            <Link to="/startgame">
+              <StyledButton
+                icon={
+                  <Risk
+                    onMouseOver={() => setHover(true)}
+                    onMouseOut={() => setHover(false)}
+                    color={hover ? "black" : "white"}
+                  />
+                }
+                iconName="Start"
+              />
+            </Link>
+          </Box>
         </Box>
-        <Box flex />
       </Box>
+      <Box flex />
     </Box>
   );
 }
 
 export default SideBar;
 
-/* <Box flex overflow="auto">
-          <Box pad={{ vertical: "small"}}
-          gap="xsmall"
-          align="center"
-          justify="center">
-          <Link to="/">
-          <Button 
-            icon={<Gremlin size="medium" color="light-5"/>}
-          />
-          </Link>
-          <Link to="/rules">
-          <Button 
-          icon={<CircleQuestion size="medium" color="light-5"/>}
-          />
-          </Link>
-          <Link to="/startgame">
-          <Button 
-          icon={<Risk size="medium" color="light-5"/>}
-          />
-          </Link>
-          </Box>
+/*
+const size = useContext(ResponsiveContext);
+          <Box align="center" gap={size === "small" ? "medium" : "small"}>
+          {["Gremlin", "CircleQuestion", "Risk"].map((iconName, index) => (
+            <SpecialButton key={iconName} iconName={iconName} index={index}>
+              <Link to="/rules"></Link>
+              </SpecialButton>
+          ))}
+        </Box>
           */
