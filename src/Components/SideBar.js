@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { CircleQuestion, Gremlin, Risk } from "grommet-icons";
-import { Box, Button, ResponsiveContext } from "grommet";
+import { Box, ResponsiveContext } from "grommet";
 import StyledButton from "./StyledButton";
 
 function SideBar() {
@@ -36,7 +36,6 @@ function SideBar() {
                 iconName="Home"
               />
             </Link>
-
             <Link to="/rules">
               <StyledButton
                 icon={
@@ -49,7 +48,6 @@ function SideBar() {
                 iconName="Rules"
               />
             </Link>
-
             <Link to="/startgame">
               <StyledButton
                 icon={
@@ -72,13 +70,5 @@ function SideBar() {
 
 export default SideBar;
 
-/*
-const size = useContext(ResponsiveContext);
-          <Box align="center" gap={size === "small" ? "medium" : "small"}>
-          {["Gremlin", "CircleQuestion", "Risk"].map((iconName, index) => (
-            <SpecialButton key={iconName} iconName={iconName} index={index}>
-              <Link to="/rules"></Link>
-              </SpecialButton>
-          ))}
-        </Box>
-          */
+//s'tt varje button i en box!!!
+

@@ -1,25 +1,41 @@
 import React from "react";
 import { Box, Heading, Markdown, Paragraph } from "grommet";
 import { Gremlin } from "../components/Gremlin";
+import { Reactjs, Grommet as GrommetIcon } from "grommet-icons";
 
 function Dashboard() {
   return (
-    <Box align="center" pad={{ top: "large", horizontal: "small" }} fill>
-      <Box flex align="center" overflow="auto">
-        <Heading textAlign="center" level="2">
-          Welcome to Gremlin YATZY!
+    <Box 
+    align="center" 
+    pad={{ top: "large", horizontal: "small" }} 
+    fill
+    >
+      <Box flex align="center" overflow="auto" >
+        <Box 
+        border={{ color: "brand", size: "medium" }} 
+        round="small"
+        background="light-2"
+        >
+        <Heading textAlign="center" level="2" color="black">
+          Welcome to YATZY!
         </Heading>
-        <Paragraph textAlign="center" color="dark-5">
+        <Paragraph textAlign="center" color="black">
           <Markdown>
             So this is what you need to do before we get started! Click on the
-            button thats say's `Rules` to read how a game of Yatzy works. When
-            you are done just click the button `Start Game` and we are ready to
-            goooo!
+            button with a **?** to read the **rules**. When you are done reading
+            the rules just click the button with the **dice** and you are ready
+            to start **YATZY!**
           </Markdown>
         </Paragraph>
-        <Paragraph textAlign="center" color="dark-5">
-          This app was created with React and Grommet!
+        <Paragraph textAlign="center" color="black">
+          <Markdown>
+          This app was created with **React** and **Grommet**
+          </Markdown>
         </Paragraph>
+        <Paragraph textAlign="center">
+        <Reactjs align="center" color="#61dbfb" size="large"/>  <GrommetIcon align="center" color="brand" size="large"/>
+        </Paragraph>
+        </Box>
       </Box>
       <Gremlin />
     </Box>

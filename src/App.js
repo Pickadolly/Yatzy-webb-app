@@ -38,7 +38,8 @@ const theme = {
     font: {
       family: "Roboto",
       size: "18px",
-      height: "20px"
+      height: "20px",
+      color: "black"
     }
   }
 };
