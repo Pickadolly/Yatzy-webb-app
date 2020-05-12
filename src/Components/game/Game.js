@@ -1,13 +1,15 @@
-import React, { useContext, useCallback } from "react";
+import React, { useContext, useCallback, useState, useReducer } from "react";
 import { Box, Heading, ResponsiveContext, Button } from "grommet";
 import { useGameDice } from "./../../useGameDice";
 import { Dice1, Dice2, Dice3, Dice4, Dice5, Dice6 } from "./../dice/Dice";
-
 import { DisplayUpperScores, DisplayLowerScores } from "../Protocols";
+import useToggleState from "../../hooks/useToggleState";
 
 function GameLayout() {
-  const [state, api] = useGameDice(5);
-  const { diceValue, numberOfDice } = state;
+  const [state, api] = useGameDice();
+  const { diceValue, rollsLeft } = state;
+  const [locked, setLocked] = useState(false);
+  const [clicked, setClicked] = useState(false);
 
   const size = useContext(ResponsiveContext);
 
@@ -26,6 +28,8 @@ function GameLayout() {
       default:
         return <Dice6 />;
     }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const handleNumberOfDiceClick = useCallback(
@@ -37,8 +41,29 @@ function GameLayout() {
     [api]
   );
 
+  const handleRollClick = () => {
+    if (rollsLeft !== 3 || rollsLeft < 3) {
+      api.rollDice();
+    } else {
+      if (rollsLeft === 3) {
+        setClicked(true);
+        api.resetDice();
+      }
+    }
+  }
+
+  const holdDice = (value) => {
+    setLocked(true);
+    console.log("Du klickade", locked, getDiceClassName(value));
+  };
+
   return (
-    <Box align="center" pad={{ top: "large", horizontal: "small" }} fill>
+    <Box
+      align="center"
+      pad={{ top: "large", horizontal: "small" }}
+      fill
+      background="#F5F6F5"
+    >
       <Box flex align="center" overflow="auto" size={size}>
         <Box
           border={{ color: "brand", size: "medium" }}
@@ -50,15 +75,21 @@ function GameLayout() {
           <Heading textAlign="center" level="2" color="black">
             YATZY!
           </Heading>
+          <Heading textAlign="center" level="3" color="black">
+            You have rolled {rollsLeft} times
+          </Heading>
           <Box direction="row" justify="between" size={size} responsive={true}>
             {diceValue &&
               diceValue.map((value, index) => (
-                <Box key={index}>{getDiceClassName(value)}</Box>
+                <Box key={index} focusIndicator={false} onClick={holdDice} disabled={locked}>
+                  {getDiceClassName(value)}
+                </Box>
               ))}
           </Box>
           <Button
             label="Roll Dice"
-            onClick={api.rollDice}
+            onClick={handleRollClick}
+            disabled={clicked}
             size={size}
             margin={{
               top: "small",

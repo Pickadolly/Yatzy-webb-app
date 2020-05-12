@@ -6,11 +6,12 @@ function StyledButton({ iconName, icon, ...rest }) {
   const [over, setOver] = useState();
   const ref = useRef();
 
-  const hoverColor = { color: "accent-1", opacity: 0.9 };
+  const hoverColor = { color: "#F335A2", opacity: 0.9 };
 
   return (
     <Box width="100%">
       <Button
+      focusIndicator={false}
         icon={icon}
         ref={ref}
         onMouseOver={() => setOver(true)}

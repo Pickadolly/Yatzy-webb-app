@@ -1,6 +1,5 @@
 import React from "react";
-import { Box, Heading, Markdown, Paragraph } from "grommet";
-import { Gremlin } from "../components/Gremlin";
+import { Box, Heading, Markdown, Paragraph, Text } from "grommet";
 import { Reactjs, Grommet as GrommetIcon } from "grommet-icons";
 
 function Dashboard() {
@@ -9,17 +8,21 @@ function Dashboard() {
     align="center" 
     pad={{ top: "large", horizontal: "small" }} 
     fill
+    background="light-1"
     >
       <Box flex align="center" overflow="auto" >
         <Box 
-        border={{ color: "brand", size: "medium" }} 
+        elevation="large"
+        border={{ color: "#F335A2", size: "medium" }} 
         round="small"
-        background="light-2"
+        background="#6A898E"
+        width="45rem"
+        height="35rem"
         >
-        <Heading textAlign="center" level="2" color="black">
-          Welcome to YATZY!
+        <Heading textAlign="center" level="2" color="white">
+          Welcome to <Text size="2rem" color="#60F6AD">YATZY!</Text>
         </Heading>
-        <Paragraph textAlign="center" color="black">
+        <Paragraph textAlign="center" color="white">
           <Markdown>
             So this is what you need to do before we get started! Click on the
             button with a **?** to read the **rules**. When you are done reading
@@ -27,7 +30,7 @@ function Dashboard() {
             to start **YATZY!**
           </Markdown>
         </Paragraph>
-        <Paragraph textAlign="center" color="black">
+        <Paragraph textAlign="center" color="white">
           <Markdown>
           This app was created with **React** and **Grommet**
           </Markdown>
@@ -37,7 +40,6 @@ function Dashboard() {
         </Paragraph>
         </Box>
       </Box>
-      <Gremlin />
     </Box>
   );
 }

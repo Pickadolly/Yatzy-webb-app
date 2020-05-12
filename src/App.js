@@ -33,13 +33,13 @@ const theme = {
   global: {
     colors: {
       brand: "#7D4CDB",
-      font: "#6FFFB0"
+      font: "#241A2A"
     },
     font: {
       family: "Roboto",
       size: "18px",
       height: "20px",
-      color: "black"
+      color: "#241A2A"
     }
   }
 };

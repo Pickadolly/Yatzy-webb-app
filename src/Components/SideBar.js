@@ -9,7 +9,7 @@ function SideBar() {
   const [hover, setHover] = useState();
 
   return (
-    <Box fill="vertical" width="xxsmall" background="brand" elevation="medium">
+    <Box fill="vertical" width="xxsmall" background="#6A898E" elevation="medium">
       <Box
         flex={false}
         alignt="center"
@@ -30,7 +30,7 @@ function SideBar() {
                   <Gremlin
                     onMouseOver={() => setHover(true)}
                     onMouseOut={() => setHover(false)}
-                    color={hover ? "black" : "white"}
+                    color={hover ? "white" : "#60F6AD"}
                   />
                 }
                 iconName="Home"
@@ -42,7 +42,7 @@ function SideBar() {
                   <CircleQuestion
                     onMouseOver={() => setHover(true)}
                     onMouseOut={() => setHover(false)}
-                    color={hover ? "black" : "white"}
+                    color={hover ? "white" : "#60F6AD"}
                   />
                 }
                 iconName="Rules"
@@ -54,7 +54,7 @@ function SideBar() {
                   <Risk
                     onMouseOver={() => setHover(true)}
                     onMouseOut={() => setHover(false)}
-                    color={hover ? "black" : "white"}
+                    color={hover ? "white" : "#60F6AD"}
                   />
                 }
                 iconName="Start"
